@@ -16,6 +16,7 @@ import sys
 def timeConversion(s):
     isPM = (s[8:10] == "PM")
     hh = int(s[0:2])
+    
     if isPM:
         if  hh < 12:
             hh += 12
@@ -23,8 +24,10 @@ def timeConversion(s):
         print("Im here")
         if hh == 12:
             hh -= 12
-    
-    return str(hh) + s[2:8]
+    result = str(hh) + s[2:8]
+    if hh < 10:
+        result = "0" + result 
+    return result
 
 if __name__ == '__main__':
     fptr = open(os.environ['OUTPUT_PATH'], 'w')
